@@ -47,7 +47,7 @@ const loadSpecificButton = async (id) => {
     try {
         const res = await fetch(url);
         const categoryWiseNews = await res.json();
-        console.log(categoryWiseNews);
+        // console.log(categoryWiseNews);
 
         displayCategoryWiseNews(categoryWiseNews);
     }
