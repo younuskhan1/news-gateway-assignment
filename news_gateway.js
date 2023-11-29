@@ -17,12 +17,18 @@ const categoriesContainer = document.getElementById("category-name");
 const displayCategoryName = (categoryNames) => {
     // console.log(categoryNames);
     categoryNames.forEach((categoryName) => {
-        console.log(categoryName);
+        // console.log(categoryName);
         const buttonDiv = document.createElement("div");
         buttonDiv.innerHTML = `
         <button class="category-button" onClick = "loadSpecificButton('${categoryName.category_id}')">${categoryName.category_name}</button>
         `;
         categoriesContainer.appendChild(buttonDiv);
+
+        // the buttons have been active by below codes 
+        // To do button active, I used forEach to do loop but 
+        // the code do not work while using forEach for that 
+        // reason I used here normal for loop. 
+
         const categoryButtons = document.getElementsByClassName("category-button");
         for (let buttons of categoryButtons) {
             buttons.addEventListener("click", function (event) {
@@ -41,7 +47,7 @@ const loadSpecificButton = async (id) => {
     try {
         const res = await fetch(url);
         const categoryWiseNews = await res.json();
-        // console.log(categoryWiseNews);
+        console.log(categoryWiseNews);
 
         displayCategoryWiseNews(categoryWiseNews);
     }
