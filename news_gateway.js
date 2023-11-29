@@ -1,3 +1,4 @@
+
 const loadCategoryType = async () => {
     const url = `https://openapi.programming-hero.com/api/news/categories`;
     try {
@@ -19,9 +20,19 @@ const displayCategoryName = (categoryNames) => {
         console.log(categoryName);
         const buttonDiv = document.createElement("div");
         buttonDiv.innerHTML = `
-        <button class="btn button-class" onClick = "loadSpecificButton('${categoryName.category_id}')">${categoryName.category_name}</button>
+        <button class="category-button" onClick = "loadSpecificButton('${categoryName.category_id}')">${categoryName.category_name}</button>
         `;
         categoriesContainer.appendChild(buttonDiv);
+        const categoryButtons = document.getElementsByClassName("category-button");
+        for (let buttons of categoryButtons) {
+            buttons.addEventListener("click", function (event) {
+                event.stopImmediatePropagation();
+                for (let bttn of categoryButtons) {
+                    bttn.classList.remove("active");
+                    this.classList.add("active");
+                }
+            })
+        }
     })
 }
 
@@ -30,7 +41,7 @@ const loadSpecificButton = async (id) => {
     try {
         const res = await fetch(url);
         const categoryWiseNews = await res.json();
-        console.log(categoryWiseNews);
+        // console.log(categoryWiseNews);
 
         displayCategoryWiseNews(categoryWiseNews);
     }
@@ -40,8 +51,8 @@ const loadSpecificButton = async (id) => {
 }
 
 let categoriesName;
-
 const numberOfNews = document.getElementById("number-of-news");
+
 const displayCategoryWiseNews = (categoryNews) => {
     // console.log(categoryNews);
 
