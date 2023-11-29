@@ -16,9 +16,10 @@ const categoriesContainer = document.getElementById("category-name");
 const displayCategoryName = (categoryNames) => {
     // console.log(categoryNames);
     categoryNames.forEach((categoryName) => {
+        console.log(categoryName);
         const buttonDiv = document.createElement("div");
         buttonDiv.innerHTML = `
-        <button class="btn" onClick = "loadSpecificButton('${categoryName.category_id}')">${categoryName.category_name}</button>
+        <button class="btn button-class" onClick = "loadSpecificButton('${categoryName.category_id}')">${categoryName.category_name}</button>
         `;
         categoriesContainer.appendChild(buttonDiv);
     })
@@ -28,12 +29,47 @@ const loadSpecificButton = async (id) => {
     const url = `https://openapi.programming-hero.com/api/news/category/${id}`;
     try {
         const res = await fetch(url);
-        const specificButton = await res.json();
-        console.log(specificButton);
+        const categoryWiseNews = await res.json();
+        console.log(categoryWiseNews);
+
+        displayCategoryWiseNews(categoryWiseNews);
     }
     catch (error) {
         console.log(error);
     }
+}
+
+let categoriesName;
+
+const numberOfNews = document.getElementById("number-of-news");
+const displayCategoryWiseNews = (categoryNews) => {
+    // console.log(categoryNews);
+
+    const categoryId = categoryNews.data[0] ? categoryNews.data[0].category_id : "not available";
+
+    if (categoryId === "01") {
+        categoriesName = "Breaking News";
+    }
+    else if (categoryId === "02") {
+        categoriesName = "Regular News";
+    }
+    else if (categoryId === "03") {
+        categoriesName = "International News";
+    }
+    else if (categoryId === "04") {
+        categoriesName = "Sports";
+    }
+    else if (categoryId === "05") {
+        categoriesName = "Entertainment";
+    }
+    else if (categoryId === "not available") {
+        categoriesName = "Culture";
+    }
+    else if (categoryId === "07") {
+        categoriesName = "Arts"
+    }
+
+    numberOfNews.innerText = `${categoryNews.data.length} items found for category of ${categoriesName}`;
 }
 
 loadCategoryType();
