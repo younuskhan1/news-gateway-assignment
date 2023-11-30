@@ -28,11 +28,29 @@
             </div>
         </div>
     </header>
-    <section class="bg-[#F6F6F6] pt-6 pb-8">
-        <div id="category-name" class="flex justify-evenly w-[90%] m-auto"></div>
+    <section class="bg-[#F6F6F6] pt-6 pb-2">
+        <div id="category-name" class="flex justify-evenly flex-wrap w-[90%] m-auto"></div>
     </section>
     <section class="bg-[#F6F6F6] pb-8">
-        <div id="number-of-news" class="w-[87%] m-auto bg-white h-[50px] rounded-lg pt-3 pl-4 font-semibold"></div>
+        <div id="number-of-news"
+            class="w-[90%] m-auto bg-white lg:h-[50px] md:h-[50px] h-[70px] rounded-lg pt-3 pl-4 pr-4 font-semibold">
+        </div>
+    </section>
+    <section class="bg-[#F6F6F6] pb-8">
+        <div class="flex justify-between items-center flex-col lg:flex-row md:flex-row w-[90%] m-auto">
+            <div class="flex pb-5 lg:pb-0 md:pb-0">
+                <div><button class="view-button">Sort By View</button></div>
+                <div><input class="py-2 ml-4 w-28 text-center outline-0 rounded-s-lg" type="text" id=""
+                        placeholder="Default"><i class="fa-solid fa-angle-down py-[12px] w-6 rounded-e-lg bg-white"></i>
+                </div>
+            </div>
+            <div class="flex">
+                <div><button class="pick-button">Today's Pick</button></div>
+                <div><input
+                        class="py-2 lg:ml-4 md:ml-4 ml-11 w-28 text-center ring-2 ring-pink-500 outline-none rounded-sm"
+                        type="text" id="" placeholder="Trending"></div>
+            </div>
+        </div>
     </section>
 
     <script src="./news_gateway.js"></script>

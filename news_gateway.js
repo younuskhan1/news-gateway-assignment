@@ -20,7 +20,7 @@ const displayCategoryName = (categoryNames) => {
         // console.log(categoryName);
         const buttonDiv = document.createElement("div");
         buttonDiv.innerHTML = `
-        <button class="category-button" onClick = "loadSpecificButton('${categoryName.category_id}')">${categoryName.category_name}</button>
+        <button class="category-button mb-4 lg:w-auto md:w-[160px] w-[220px] text-center" onClick = "loadSpecificButton('${categoryName.category_id}')">${categoryName.category_name}</button>
         `;
         categoriesContainer.appendChild(buttonDiv);
 
@@ -47,7 +47,7 @@ const loadSpecificButton = async (id) => {
     try {
         const res = await fetch(url);
         const categoryWiseNews = await res.json();
-        // console.log(categoryWiseNews);
+        console.log(categoryWiseNews);
 
         displayCategoryWiseNews(categoryWiseNews);
     }
