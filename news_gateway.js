@@ -113,21 +113,21 @@ const displayCategoryWiseNews = (categoryNews) => {
                 <div class="flex flex-row justify-between items-center w-[100%]">
                     <div class="flex">
                         <div class="mr-4"><img class="h-[40px] w-[40px] rounded-full" src="${cardData.author.img}" alt=""></div>
-                        <div>
-                            <p>${cardData.author.name}</p>
-                            <p>${cardData.author.published_date}</p>
+                        <div class="text-[13px]">
+                            <p class="text-[#2B2C34]">${cardData.author.name ? cardData.author.name : "not available"}</p>
+                            <p class="text-[#718797]">${cardData.author.published_date ? cardData.author.published_date : "not available"}</p>
                         </div>
                     </div>
-                    <p class="text-[15px]"><i class="fa-regular fa-eye"></i><span class="ml-3">${cardData.total_view ? cardData.total_view : "not available"}</span></p>
+                    <p class="text-[15px] text-[#515151]"><i class="fa-regular fa-eye"></i><span class="ml-3">${cardData.total_view ? cardData.total_view : "not available"}</span></p>
     
-                    <div>
+                    <div class="text-[#515151]">
                         <i class="fa-solid fa-star-half-stroke"></i>
                         <i class="fa-regular fa-star"></i>
                         <i class="fa-regular fa-star"></i>
                         <i class="fa-regular fa-star"></i>
                         <i class="fa-regular fa-star"></i>
                     </div>
-                    <p><i class="fa-solid fa-arrow-right mr-4"></i></p>
+                    <p class="text-[25px] text-[#515151] bg-[#f7f2f2] hover:bg-[#718797] hover:text-white pl-3 rounded-lg cursor-pointer"><i class="fa-solid fa-arrow-right mr-4"></i></p>
                 </div> 
 
             </div>
