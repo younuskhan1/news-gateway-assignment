@@ -23,7 +23,6 @@ const displayCategoryName = (categoryNames) => {
         <button class="category-button mb-4 lg:w-auto md:w-[160px] w-[220px]" onClick = "loadSpecificButton('${categoryName.category_id}')">${categoryName.category_name}</button>
         `;
         categoriesContainer.appendChild(buttonDiv);
-
         // the buttons have been active by below codes 
         // To do button active, I used forEach to do loop but 
         // the code do not work while using forEach for that 
@@ -43,6 +42,7 @@ const displayCategoryName = (categoryNames) => {
 }
 
 const loadSpecificButton = async (id) => {
+    isNewsLoading(true);
     const url = `https://openapi.programming-hero.com/api/news/category/${id}`;
     try {
         const res = await fetch(url);
@@ -115,9 +115,17 @@ const displayCategoryWiseNews = (categoryNews) => {
         `;
         carddContainer.appendChild(cardDiv);
     })
-
-
+    isNewsLoading(false);
 }
 
+const spinnerShownSection = document.getElementById("spinner-shown-section");
+
+const isNewsLoading = (isLoading) => {
+    if (isLoading) {
+        spinnerShownSection.classList.remove("hidden");
+    } else {
+        spinnerShownSection.classList.add("hidden");
+    }
+}
 
 loadCategoryType();
