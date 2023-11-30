@@ -110,15 +110,15 @@ const displayCategoryWiseNews = (categoryNews) => {
                     <p class="text-[#949494] text-sm text-justify lg:pr-3 md:pr-1 pr-0 lg:pb-0 md:pb-0 pb-3">${(cardData.details).length > 350 ? (cardData.details).slice(0, 350) + `<span class="text-xl">&#x2026;</span>` : cardData.details}</p>
                     
                 </div>
-                <div class=" lg:flex md:flex lg:flex-row md:flex-row grid grid-cols-1 lg:justify-between md:justify-between lg:items-center md:items-center w-[100%]">
+                <div class=" lg:flex md:flex lg:flex-row md:flex-row grid grid-cols-1 lg:justify-between md:justify-between lg:items-center md:items-center w-[100%] pb-5">
                     <div class="flex justify-center lg:pb-0 md:pb-0 pb-4">
                         <div class="mr-4"><img class="h-[40px] w-[40px] rounded-full" src="${cardData.author.img}" alt=""></div>
                         <div class="text-[13px]">
-                            <p class="text-[#2B2C34]">${cardData.author.name ? cardData.author.name : "not available"}</p>
-                            <p class="text-[#718797]">${cardData.author.published_date ? cardData.author.published_date : "not available"}</p>
+                            <p class="text-[#2B2C34]">${cardData.author.name ? cardData.author.name : "none"}</p>
+                            <p class="text-[#718797]">${cardData.author.published_date ? cardData.author.published_date : "none"}</p>
                         </div>
                     </div>
-                    <p class="text-[15px] text-[#515151] lg:pb-0 md:pb-0 pb-2 text-center"><span class="mr-3 lg:hidden md:hidden">Viewers :</span><i class="fa-regular fa-eye"></i><span class="ml-3">${cardData.total_view ? cardData.total_view : "not available"}</span></p>
+                    <p class="text-[15px] text-[#515151] lg:pb-0 md:pb-0 pb-2 text-center"><span class="mr-3 lg:hidden md:hidden">Viewers :</span><i class="fa-regular fa-eye"></i><span class="ml-3">${cardData.total_view ? cardData.total_view : "none"}</span></p>
     
                     <div class="text-[#515151] lg:pb-0 md:pb-0 pb-4 text-center">
                         <span class="lg:hidden md:hidden mr-2">Ratings:  </span>
