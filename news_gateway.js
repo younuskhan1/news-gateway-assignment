@@ -102,11 +102,11 @@ const displayCategoryWiseNews = (categoryNews) => {
         const cardDiv = document.createElement("div");
         cardDiv.classList = `mb-5`;
         cardDiv.innerHTML = `
-        <div class="h-[250px] flex gap-5 p-3 border border-orange-400 bg-white rounded-lg">
-            <div class="w-[25%]"><img class="w-[100%] h-[100%] mb-5" src="${cardData.thumbnail_url}" alt=""></div>
-            <div class="w-[75%]">
+        <div class="lg:h-[250px] md:h-[300px] h-auto flex lg:flex-row md:flex-row flex-col gap-5 p-3 border border-orange-400 bg-white rounded-lg">
+            <div class="lg:w-[25%] md:w-[30%] w-[100%]"><img class="w-[100%] h-[100%] mb-5" src="${cardData.thumbnail_url}" alt=""></div>
+            <div class="lg:w-[75%] md:w-[70%] w-[100%]">
                 <h1 class="font-extrabold mb-3">${cardData.title}</h1>
-                <p class="text-[#949494] text-sm text-justify pr-3">${(cardData.details).length > 350 ? (cardData.details).slice(0, 350) + `<span class="text-xl">&#x2026;</span>` : cardData.details}</p>
+                <p class="text-[#949494] text-sm text-justify lg:pr-3 md:pr-1 pr-0">${(cardData.details).length > 350 ? (cardData.details).slice(0, 350) + `<span class="text-xl">&#x2026;</span>` : cardData.details}</p>
                 </div>
                 </div>
             <div>
