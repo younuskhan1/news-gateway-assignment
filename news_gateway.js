@@ -104,14 +104,35 @@ const displayCategoryWiseNews = (categoryNews) => {
         cardDiv.innerHTML = `
         <div class="lg:h-[250px] md:h-[300px] h-auto flex lg:flex-row md:flex-row flex-col gap-5 p-3 border border-orange-400 bg-white rounded-lg">
             <div class="lg:w-[25%] md:w-[30%] w-[100%]"><img class="w-[100%] h-[100%] mb-5" src="${cardData.thumbnail_url}" alt=""></div>
-            <div class="lg:w-[75%] md:w-[70%] w-[100%]">
-                <h1 class="font-extrabold mb-3">${cardData.title}</h1>
-                <p class="text-[#949494] text-sm text-justify lg:pr-3 md:pr-1 pr-0">${(cardData.details).length > 350 ? (cardData.details).slice(0, 350) + `<span class="text-xl">&#x2026;</span>` : cardData.details}</p>
+            <div class="lg:w-[75%] md:w-[70%] w-[100%] flex flex-col justify-between">
+                <div>
+                    <h1 class="font-extrabold mb-3">${cardData.title}</h1>
+                    <p class="text-[#949494] text-sm text-justify lg:pr-3 md:pr-1 pr-0">${(cardData.details).length > 350 ? (cardData.details).slice(0, 350) + `<span class="text-xl">&#x2026;</span>` : cardData.details}</p>
+                    
                 </div>
-                </div>
-            <div>
+                <div class="flex flex-row justify-between items-center w-[100%]">
+                    <div class="flex">
+                        <div class="mr-4"><img class="h-[40px] w-[40px] rounded-full" src="${cardData.author.img}" alt=""></div>
+                        <div>
+                            <p>${cardData.author.name}</p>
+                            <p>${cardData.author.published_date}</p>
+                        </div>
+                    </div>
+                    <p class="text-[15px]"><i class="fa-regular fa-eye"></i><span class="ml-3">${cardData.total_view ? cardData.total_view : "not available"}</span></p>
+    
+                    <div>
+                        <i class="fa-solid fa-star-half-stroke"></i>
+                        <i class="fa-regular fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                    </div>
+                    <p><i class="fa-solid fa-arrow-right mr-4"></i></p>
+                </div> 
+
+            </div>
+            
         </div>
-        
         `;
         carddContainer.appendChild(cardDiv);
     })
@@ -130,3 +151,6 @@ const isNewsLoading = (isLoading) => {
 
 loadSpecificButton("08");
 loadCategoryType();
+
+
+
