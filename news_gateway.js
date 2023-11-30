@@ -107,27 +107,28 @@ const displayCategoryWiseNews = (categoryNews) => {
             <div class="lg:w-[75%] md:w-[70%] w-[100%] flex flex-col justify-between">
                 <div>
                     <h1 class="font-extrabold mb-3">${cardData.title}</h1>
-                    <p class="text-[#949494] text-sm text-justify lg:pr-3 md:pr-1 pr-0">${(cardData.details).length > 350 ? (cardData.details).slice(0, 350) + `<span class="text-xl">&#x2026;</span>` : cardData.details}</p>
+                    <p class="text-[#949494] text-sm text-justify lg:pr-3 md:pr-1 pr-0 lg:pb-0 md:pb-0 pb-3">${(cardData.details).length > 350 ? (cardData.details).slice(0, 350) + `<span class="text-xl">&#x2026;</span>` : cardData.details}</p>
                     
                 </div>
-                <div class="flex flex-row justify-between items-center w-[100%]">
-                    <div class="flex">
+                <div class=" lg:flex md:flex lg:flex-row md:flex-row grid grid-cols-1 lg:justify-between md:justify-between lg:items-center md:items-center w-[100%]">
+                    <div class="flex justify-center lg:pb-0 md:pb-0 pb-4">
                         <div class="mr-4"><img class="h-[40px] w-[40px] rounded-full" src="${cardData.author.img}" alt=""></div>
                         <div class="text-[13px]">
                             <p class="text-[#2B2C34]">${cardData.author.name ? cardData.author.name : "not available"}</p>
                             <p class="text-[#718797]">${cardData.author.published_date ? cardData.author.published_date : "not available"}</p>
                         </div>
                     </div>
-                    <p class="text-[15px] text-[#515151]"><i class="fa-regular fa-eye"></i><span class="ml-3">${cardData.total_view ? cardData.total_view : "not available"}</span></p>
+                    <p class="text-[15px] text-[#515151] lg:pb-0 md:pb-0 pb-2 text-center"><span class="mr-3 lg:hidden md:hidden">Viewers :</span><i class="fa-regular fa-eye"></i><span class="ml-3">${cardData.total_view ? cardData.total_view : "not available"}</span></p>
     
-                    <div class="text-[#515151]">
+                    <div class="text-[#515151] lg:pb-0 md:pb-0 pb-4 text-center">
+                        <span class="lg:hidden md:hidden mr-2">Ratings:  </span>
                         <i class="fa-solid fa-star-half-stroke"></i>
                         <i class="fa-regular fa-star"></i>
                         <i class="fa-regular fa-star"></i>
                         <i class="fa-regular fa-star"></i>
                         <i class="fa-regular fa-star"></i>
                     </div>
-                    <p class="text-[25px] text-[#515151] bg-[#f7f2f2] hover:bg-[#718797] hover:text-white pl-3 rounded-lg cursor-pointer"><i class="fa-solid fa-arrow-right mr-4"></i></p>
+                    <p class="text-[25px] text-[#515151] bg-[#f7f2f2] hover:bg-[#718797] hover:text-white pl-3 rounded-lg cursor-pointer text-center"><i class="fa-solid fa-arrow-right mr-4"></i></p>
                 </div> 
 
             </div>
