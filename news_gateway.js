@@ -128,7 +128,7 @@ const displayCategoryWiseNews = (categoryNews) => {
                         <i class="fa-regular fa-star"></i>
                         <i class="fa-regular fa-star"></i>
                     </div>
-                    <p class="text-[25px] text-[#515151] bg-[#f7f2f2] hover:bg-[#718797] hover:text-white pl-3 rounded-lg cursor-pointer text-center"><i class="fa-solid fa-arrow-right mr-4"></i></p>
+                    <p class="text-[25px] text-[#5D5FEF] bg-[#f7f2f2] hover:bg-[#5D5FEF] hover:text-white pl-3 rounded-lg cursor-pointer text-center"><i class="fa-solid fa-arrow-right mr-4"></i></p>
                 </div> 
 
             </div>
