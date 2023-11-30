@@ -11,7 +11,46 @@
 </head>
 
 <body>
-    <h1>amar sonar bangla</h1>
+    <section class="w-[90%] m-auto mt-10">
+        <h1 class="font-extrabold text-fuchsia-800">Question : Describe the differences among var, let and const .</h1>
+        <p class="mt-3 text-justify"><span class="font-extrabold">Answer :</span>
+            Variable declaration in JavaScript is the process of creating a variable and giving it a name so that it can
+            be used to store a value. A variable is a named container that holds a value, and can be used to store and
+            manipulate data in a program. "var", "let", and "const" are all used in JavaScript to declare variables.
+            However, there are many differences between let, var, and const in javascript in terms of how they behave
+            and how they should be used.
+
+        <h2 class="font-extrabold my-3">var</h2>
+        <p class="text-justify">"var" is the oldest way to declare a variable in JavaScript. Variables declared
+            with
+            "var" have a
+            function-level scope, meaning they are only accessible within the function in which they were declared. They
+            also have "hoisting" behavior, which means they are accessible throughout the entire scope of the function,
+            regardless of where they were declared. However, because of its function-level scope, variables declared
+            with var can lead to unexpected behavior and are generally not recommended.</p>
+
+        <h2 class="font-extrabold my-3">let</h2>
+        <p class="text-justify"> "let" was introduced in ECMAScript 6 (also known as ES6) as an alternative to "var".
+            Variables declared with
+            "let" have the block-level scope, meaning they are only accessible within the block in which they were
+            declared. They also have the concept of the temporal dead zone, which means they are not accessible before
+            they are declared.</p>
+
+        <h2 class="font-extrabold my-3">const</h2>
+        <p class="text-justify">"const" was also introduced in ECMAScript 6 and is used to declare variables that cannot
+            be reassigned. This
+            makes "const" variables useful for declaring constants, such as pi or the gravitational constant, which have
+            a fixed value. Like "let", "const" variables have the block-level scope, and, they are not accessible before
+            they are declared.</p>
+        <P class="text-justify my-3"> However, it is recommended to use "let" and "const" over "var" when declaring
+            variables
+            in JavaScript
+            because they have more predictable behavior, and "const" is the most recommended for defining constant
+            values that you don't expect to change.</P>
+
+        </p>
+    </section>
+
 </body>
 
 </html>
