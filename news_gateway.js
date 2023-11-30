@@ -20,7 +20,7 @@ const displayCategoryName = (categoryNames) => {
         // console.log(categoryName);
         const buttonDiv = document.createElement("div");
         buttonDiv.innerHTML = `
-        <button class="category-button mb-4 lg:w-auto md:w-[160px] w-[220px] text-center" onClick = "loadSpecificButton('${categoryName.category_id}')">${categoryName.category_name}</button>
+        <button class="category-button mb-4 lg:w-auto md:w-[160px] w-[220px]" onClick = "loadSpecificButton('${categoryName.category_id}')">${categoryName.category_name}</button>
         `;
         categoriesContainer.appendChild(buttonDiv);
 
@@ -47,7 +47,7 @@ const loadSpecificButton = async (id) => {
     try {
         const res = await fetch(url);
         const categoryWiseNews = await res.json();
-        console.log(categoryWiseNews);
+        // console.log(categoryWiseNews);
 
         displayCategoryWiseNews(categoryWiseNews);
     }
@@ -85,8 +85,39 @@ const displayCategoryWiseNews = (categoryNews) => {
     else if (categoryId === "07") {
         categoriesName = "Arts"
     }
-
     numberOfNews.innerText = `${categoryNews.data.length} items found for category of ${categoriesName}`;
+
+    const carddContainer = document.getElementById("card-container");
+    const noMessageFound = document.getElementById("no-message-found");
+    carddContainer.innerHTML = "";
+    const cardsData = categoryNews.data;
+    // console.log(cardsData);
+    if (cardsData.length === 0) {
+        noMessageFound.classList.remove("hidden");
+    } else {
+        noMessageFound.classList.add("hidden");
+    }
+    cardsData.forEach((cardData) => {
+        console.log(cardData);
+        const cardDiv = document.createElement("div");
+        cardDiv.classList = `mb-5`;
+        cardDiv.innerHTML = `
+        <div class="h-[250px] flex gap-5 p-3 border border-orange-400 bg-white rounded-lg">
+            <div class="w-[25%]"><img class="w-[100%] h-[100%] mb-5" src="${cardData.thumbnail_url}" alt=""></div>
+            <div class="w-[75%]">
+                <h1 class="font-extrabold mb-3">${cardData.title}</h1>
+                <p class="text-[#949494] text-sm">${(cardData.details).slice(0, 350)} <span class="text-xl">&#x2026;</span> </p>
+                </div>
+                </div>
+            <div>
+        </div>
+        
+        `;
+        carddContainer.appendChild(cardDiv);
+    })
+
+
 }
+
 
 loadCategoryType();
