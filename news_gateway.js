@@ -1,3 +1,4 @@
+let categoryWiseSortedDataId = "08";
 
 const loadCategoryType = async () => {
     const url = `https://openapi.programming-hero.com/api/news/categories`;
@@ -43,13 +44,16 @@ const displayCategoryName = (categoryNames) => {
 
 const loadSpecificButton = async (id) => {
     isNewsLoading(true);
+
+    categoryWiseSortedDataId = id;
+
     const url = `https://openapi.programming-hero.com/api/news/category/${id}`;
     try {
         const res = await fetch(url);
         const categoryWiseNews = await res.json();
         // console.log(categoryWiseNews);
 
-        displayCategoryWiseNews(categoryWiseNews);
+        displayCategoryWiseNews(categoryWiseNews.data);
     }
     catch (error) {
         console.log(error);
@@ -58,11 +62,11 @@ const loadSpecificButton = async (id) => {
 
 let categoriesName;
 const numberOfNews = document.getElementById("number-of-news");
-
+const noMessageFound = document.getElementById("no-message-found");
 const displayCategoryWiseNews = (categoryNews) => {
-    // console.log(categoryNews);
+    console.log(categoryNews);
 
-    const categoryId = categoryNews.data[0] ? categoryNews.data[0].category_id : "not available";
+    const categoryId = categoryNews[0] ? categoryNews[0].category_id : "not available";
 
     if (categoryId === "01") {
         categoriesName = "Breaking News";
@@ -85,12 +89,11 @@ const displayCategoryWiseNews = (categoryNews) => {
     else if (categoryId === "07") {
         categoriesName = "Arts"
     }
-    numberOfNews.innerText = `${categoryNews.data.length} items found for category of ${categoriesName}`;
+    numberOfNews.innerText = `${categoryNews.length} items found for category of ${categoriesName}`;
 
     const carddContainer = document.getElementById("card-container");
-    const noMessageFound = document.getElementById("no-message-found");
     carddContainer.innerHTML = "";
-    const cardsData = categoryNews.data;
+    const cardsData = categoryNews;
     // console.log(cardsData);
     if (cardsData.length === 0) {
         noMessageFound.classList.remove("hidden");
@@ -157,7 +160,7 @@ const loadNewsDeails = async (id) => {
 const showModalContainer = document.getElementById("detailNewsInShowModal");
 
 const displayDetailNews = (detailNews) => {
-    console.log(detailNews);
+    // console.log(detailNews);
     showModalContainer.innerHTML = `
     <dialog id="my_modal_5" class="modal">
         <div class="modal-box">
@@ -172,6 +175,26 @@ const displayDetailNews = (detailNews) => {
     `;
     my_modal_5.showModal();
 }
+
+const sortedDataViews = async () => {
+    const url = `https://openapi.programming-hero.com/api/news/category/${categoryWiseSortedDataId}`;
+    try {
+        const response = await fetch(url);
+        const data = await response.json();
+        const dataForSorting = data.data;
+        const sortedData = dataForSorting.sort((a, b) => {
+            return (b.total_view) - (a.total_view);
+        })
+        // console.log(sortedData);
+        // console.log(sortedData.map(e => e.total_view));
+        displayCategoryWiseNews(sortedData);
+    }
+    catch (error) {
+        console.log(error);
+    }
+}
+
+
 
 
 
