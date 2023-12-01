@@ -121,14 +121,14 @@ const displayCategoryWiseNews = (categoryNews) => {
                     <p class="text-[15px] text-[#515151] lg:pb-0 md:pb-0 pb-2 text-center"><span class="mr-3 lg:hidden md:hidden">Viewers :</span><i class="fa-regular fa-eye"></i><span class="ml-3">${cardData.total_view ? cardData.total_view : "none"}</span></p>
     
                     <div class="text-[#515151] lg:pb-0 md:pb-0 pb-4 text-center">
-                        <span class="lg:hidden md:hidden mr-2">Ratings:  </span>
+                        <span class="lg:hidden md:hidden mr-2">Ratings :  </span>
                         <i class="fa-solid fa-star-half-stroke"></i>
                         <i class="fa-regular fa-star"></i>
                         <i class="fa-regular fa-star"></i>
                         <i class="fa-regular fa-star"></i>
                         <i class="fa-regular fa-star"></i>
                     </div>
-                    <p class="text-[25px] text-[#5D5FEF] bg-[#f7f2f2] hover:bg-[#5D5FEF] hover:text-white pl-3 rounded-lg cursor-pointer text-center"><i class="fa-solid fa-arrow-right mr-4"></i></p>
+                    <p class="text-[25px] text-[#5D5FEF] bg-[#f7f2f2] hover:bg-[#5D5FEF] hover:text-white pl-3 rounded-lg cursor-pointer text-center" onClick="loadNewsDeails('${cardData._id}')"><i class="fa-solid fa-arrow-right mr-4"></i></p>
                 </div> 
 
             </div>
@@ -139,6 +139,42 @@ const displayCategoryWiseNews = (categoryNews) => {
     })
     isNewsLoading(false);
 }
+
+const loadNewsDeails = async (id) => {
+    const url = `https://openapi.programming-hero.com/api/news/${id}`;
+    try {
+        const response = await fetch(url);
+        const data = await response.json()
+        const newsData = data.data;
+        displayDetailNews(newsData[0]);
+    }
+    catch (error) {
+        console.log(error);;
+
+    }
+}
+
+const showModalContainer = document.getElementById("detailNewsInShowModal");
+
+const displayDetailNews = (detailNews) => {
+    console.log(detailNews);
+    showModalContainer.innerHTML = `
+    <dialog id="my_modal_5" class="modal">
+        <div class="modal-box">
+            <img class="w-full mb-5" src="${detailNews.thumbnail_url}" alt="">
+            <h3 class="font-bold text-lg">${detailNews.title}</h3>
+            <p class="py-4 text-justify">${detailNews.details}</p>
+               <form method="dialog">
+                <div class="flex justify-center mt-4"><button class="btn btn-warning outline-none">Close the Details</button></div>
+               </form>
+        </div>
+    </dialog>
+    `;
+    my_modal_5.showModal();
+}
+
+
+
 
 const spinnerShownSection = document.getElementById("spinner-shown-section");
 
