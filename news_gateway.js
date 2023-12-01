@@ -53,8 +53,9 @@ const loadSpecificButton = async (id) => {
         const res = await fetch(url);
         const categoryWiseNews = await res.json();
         // console.log(categoryWiseNews);
-
-        displayCategoryWiseNews(categoryWiseNews.data);
+        const categoryWiseNewsData = categoryWiseNews.data;
+        // console.log(categoryWiseNewsData);
+        displayCategoryWiseNews(categoryWiseNewsData);
     }
     catch (error) {
         console.log(error);
@@ -65,7 +66,7 @@ let categoriesName;
 const numberOfNews = document.getElementById("number-of-news");
 const noMessageFound = document.getElementById("no-message-found");
 const displayCategoryWiseNews = (categoryNews) => {
-    console.log(categoryNews);
+    // console.log(categoryNews);
 
     const categoryId = categoryNews[0] ? categoryNews[0].category_id : "not available";
 
@@ -206,10 +207,12 @@ const sortedDataViews = async () => {
 // must be same format otherwise you will face an error. 
 // In this project the displayCategoryWiseNews function received two 
 // arguments from loadSpecificButton function for first time and 
-// sortedDataViews function for second time. both arguments format were same.
-// It was mandatory to be these two arguments same otherwise you will face an error.  
-
-
+// sortedDataViews function for second time. both arguments' format were same.
+// It was mandatory to be these two arguments same otherwise you will face an
+// error in the time of doing sorting data. 
+// those two arguments are given below : 
+// console.log(categoryWiseNewsData);
+// console.log(sortedData);
 
 const spinnerShownSection = document.getElementById("spinner-shown-section");
 
