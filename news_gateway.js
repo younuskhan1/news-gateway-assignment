@@ -54,7 +54,7 @@ const loadSpecificButton = async (id) => {
         const categoryWiseNews = await res.json();
         // console.log(categoryWiseNews);
         const categoryWiseNewsData = categoryWiseNews.data;
-        // console.log(categoryWiseNewsData);
+        // console.log(categoryWiseNewsData); 
         displayCategoryWiseNews(categoryWiseNewsData);
     }
     catch (error) {
@@ -211,8 +211,8 @@ const sortedDataViews = async () => {
 // It was mandatory to be these two arguments same otherwise you will face an
 // error in the time of doing sorting data. 
 // those two arguments are given below : 
-// console.log(categoryWiseNewsData);
-// console.log(sortedData);
+// console.log(categoryWiseNewsData); // (5) [{…}, {…}, {…}, {…}, {…}] Regular News
+// console.log(sortedData);           // (5) [{…}, {…}, {…}, {…}, {…}] Regular News
 
 const spinnerShownSection = document.getElementById("spinner-shown-section");
 
