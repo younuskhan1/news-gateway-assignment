@@ -24,6 +24,7 @@ const displayCategoryName = (categoryNames) => {
         <button class="category-button mb-4 lg:w-auto md:w-[160px] w-[220px]" onClick = "loadSpecificButton('${categoryName.category_id}')">${categoryName.category_name}</button>
         `;
         categoriesContainer.appendChild(buttonDiv);
+
         // the buttons have been active by below codes 
         // To do button active, I used forEach to do loop but 
         // the code do not work while using forEach for that 
@@ -182,6 +183,8 @@ const sortedDataViews = async () => {
         const response = await fetch(url);
         const data = await response.json();
         const dataForSorting = data.data;
+        // there is no need to use forEach to loop the array because sort()
+        // is a JS' built-in-function which runs on an array to loop the element.  
         const sortedData = dataForSorting.sort((a, b) => {
             return (b.total_view) - (a.total_view);
         })
@@ -194,8 +197,17 @@ const sortedDataViews = async () => {
     }
 }
 
+// ********* Most Important to point out for sorting *************//
 
-
+// I sent arguments to the displayCategoryWiseNews function for two times .
+// firstly, to display the category wise news as we click category-wise button.
+// secondly, to display the sorted data as we click the sort by view button. 
+// for these two times displayCategoryWiseNews functions's received parameter's data 
+// must be same format otherwise you will face an error. 
+// In this project the displayCategoryWiseNews function received two 
+// arguments from loadSpecificButton function for first time and 
+// sortedDataViews function for second time. both arguments format were same.
+// It was mandatory to be these two arguments same otherwise you will face an error.  
 
 
 
